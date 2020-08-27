@@ -1,0 +1,16 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t zronet/auth-public -f Dockerfile.dev .
+
+script:
+  - docker run zronet/zronet-auth-public npm run test -- --coverage
+#deploy:
+#provider: elasticbeanstalk
+#name: "zronet-auth" # Name of application on AWS
+#region: ""
+#env: "" # Name of environment on AWS
+#bucket_path: ""
+#bucket_name: "" # Enter elasticbeanstalk S3 bucke
